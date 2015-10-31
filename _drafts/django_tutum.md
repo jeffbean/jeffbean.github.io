@@ -20,7 +20,7 @@ This will provide us a base project and site to expand upon using Docker.
 
 Reference structure at a glance.
 
-     tree -I *.pyc
+     tree -I \*.pyc
 
 #### requirements.txt
 
@@ -37,56 +37,56 @@ A run script that is convenient for development and production.
 
 We do the **collectstatic** here and not in the Dockerfile so you only have to restart the container to update any static files. I have seen people putting static files in the image build process.
 
-    :::bash
-    #!/bin/bash
-    ##
-    # Version: 1.1
-    # Author:  jeffreyrobertbean@gmail.com
-    # Date:    3/21/2015
-    ##
+```bash
+#!/bin/bash
+##
+# Version: 1.1
+# Author:  jeffreyrobertbean@gmail.com
+# Date:    3/21/2015
+##
 
-    # Simple retry function
-    function retry {
-      local n=1
-      local max=5
-      local delay=10
-      while true; do
-        "$@" && break || {
-          if [[ ${n} -lt ${max} ]]; then
-            ((n++))
-            echo "Migration failed. Attempt $n/$max:"
-            sleep ${delay};
-          else
-            echo "The command has failed after $n attempts."
-            exit 1
-          fi
-        }
-      done
+# Simple retry function
+function retry {
+  local n=1
+  local max=5
+  local delay=10
+  while true; do
+    "$@" && break || {
+      if [[ ${n} -lt ${max} ]]; then
+        ((n++))
+        echo "Migration failed. Attempt $n/$max:"
+        sleep ${delay};
+      else
+        echo "The command has failed after $n attempts."
+        exit 1
+      fi
     }
-    ## Validate the django project is going to load properly (does not mean it will run)
-    python manage.py validate
+  done
+}
+## Validate the django project is going to load properly (does not mean it will run)
+python manage.py validate
 
-    ###
-    # migrate db, so we have the latest db schema
-    #
-    #  Need to retry so if postgres is starting for the first time.
-    #  Also allows time to see any errors before it attempts to start the server.
-    ##
-    retry python manage.py migrate --noinput
+###
+# migrate db, so we have the latest db schema
+#
+#  Need to retry so if postgres is starting for the first time.
+#  Also allows time to see any errors before it attempts to start the server.
+##
+retry python manage.py migrate --noinput
 
-    ## Collect all the static files.
-    python manage.py collectstatic --noinput
+## Collect all the static files.
+python manage.py collectstatic --noinput
 
-    ##
-    # start server on the docker ip interface, port 8001
-    #  Also handles if we are going to start the production gunicorn server or the develop server
-    ##
-    if [ -z ${DJANGO_DEBUG_MODE} ]; then
-        su -m djuser -c "gunicorn django_demo.wsgi -w 1 -b 0.0.0.0:8001 --chdir=/code --enable-stdio-inheritance --error-logfile -"
-    else
-        su -m djuser -c "python manage.py runserver 0.0.0.0:8001"
-    fi
-
+##
+# start server on the docker ip interface, port 8001
+#  Also handles if we are going to start the production gunicorn server or the develop server
+##
+if [ -z ${DJANGO_DEBUG_MODE} ]; then
+    su -m djuser -c "gunicorn django_demo.wsgi -w 1 -b 0.0.0.0:8001 --chdir=/code --enable-stdio-inheritance --error-logfile -"
+else
+    su -m djuser -c "python manage.py runserver 0.0.0.0:8001"
+fi
+```
 
 #### Dockerfile
 
@@ -277,5 +277,3 @@ This touturial gets a nice Django project up and running in Docker.
 
 
 Next post will be making a Blog application on top of this infrastructure.
-
-

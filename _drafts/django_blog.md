@@ -4,31 +4,32 @@
 
 Now to add the new blog app URL's
 
-    :::python hl_lines="3 7 8"
-    from django.conf.urls import patterns, include, url
-    from django.contrib import admin
-    from django.views.generic import RedirectView
+```python
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+from django.views.generic import RedirectView
 
-    urlpatterns = patterns(
-        '',
-        url(r'^$', RedirectView.as_view(url='/blog/'), name='home'),
-        url(r'^blog/', include('blog.urls')),
+urlpatterns = patterns(
+    '',
+    url(r'^$', RedirectView.as_view(url='/blog/'), name='home'),
+    url(r'^blog/', include('blog.urls')),
 
-        url(r'^admin/', include(admin.site.urls)),
-    )
-
+    url(r'^admin/', include(admin.site.urls)),
+)
+```
 
 #### blog/urls.py
 
-    from django.conf.urls import patterns, url
-    from blog.views import BlogIndexView, ArticleDetailView
+```python
+from django.conf.urls import patterns, url
+from blog.views import BlogIndexView, ArticleDetailView
 
-    urlpatterns = patterns(
-        '',
-        url('^(?P<slug>[\w\-]+)/$', ArticleDetailView.as_view(), name="blog-article-single"),
-        url('^$', BlogIndexView.as_view(), name="blog-article-index"),
-    )
-
+urlpatterns = patterns(
+    '',
+    url('^(?P<slug>[\w\-]+)/$', ArticleDetailView.as_view(), name="blog-article-single"),
+    url('^$', BlogIndexView.as_view(), name="blog-article-index"),
+)
+```
 
 #### blog/views.py
 

@@ -2,12 +2,13 @@ $background-row-color: #f8f8f7;
 $row-cycle-border-color: #e6e7e7;
 $text-small-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 
+
 .splash-header {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
     color: $background-row-color;
-    background: url('/images/me.jpg') no-repeat center center;
+    background: url("/static/images/me.jpg") no-repeat center center;
 
     background-size: cover;
 }
@@ -72,7 +73,7 @@ $text-small-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 .banner {
     padding: 110px 0;
     color: $background-row-color;
-    background: url('/images/bikes.jpg') no-repeat center center;
+    background: url("/static/images/bikes.jpg") no-repeat center center;
     background-size: cover;
     h2 {
         margin: 0;

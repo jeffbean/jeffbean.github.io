@@ -7,8 +7,12 @@ dl, dd, ol, ul, figure {
     margin: 0;
     padding: 0;
 }
-
-
+/**
+* Allows me to push elements like the footer based on page header-height
+*/
+html, body {
+    height: 100%;
+}
 
 /**
  * Basic styling
@@ -26,7 +30,6 @@ body {
 }
 
 
-
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
@@ -38,7 +41,6 @@ ul, ol, dl, figure,
 }
 
 
-
 /**
  * Images
  */
@@ -46,7 +48,6 @@ img {
     max-width: 100%;
     vertical-align: middle;
 }
-
 
 
 /**

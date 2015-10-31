@@ -1,0 +1,90 @@
+.splash-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f7;
+    background: url('/images/me.jpg') no-repeat center center;
+
+    background-size: cover;
+}
+
+.splash-message {
+    position: relative;
+    padding-top: 40%;
+    padding-bottom: 0;
+    > h1 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+        font-size: 5em;
+    }
+    > h3 {
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+    }
+    hr.splash-divider {
+        border-top: 1px solid #f8f8f7;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+}
+
+
+
+@include media-query($on-laptop) {
+    .splash-message {
+        padding-bottom: 15%;
+    }
+
+    .splash-message > h1 {
+        font-size: 3em;
+    }
+
+    .splash-divider {
+        width: 100%;
+    }
+}
+
+.row-cycle-a {
+    padding: 50px 0;
+    background-color: white;
+}
+
+.row-cycle-b {
+    padding: 50px 0;
+    background-color: #f8f8f7;
+    border-top: 1px solid #e6e7e7;
+    border-bottom: 1px solid #e6e7e7;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading-spacer {
+    float: left;
+    width: 200px;
+    border-top: 3px solid #e6e7e7;
+}
+
+.banner {
+    padding: 110px 0;
+    color: #f8f8f7;
+    background: url('/images/bikes.jpg') no-repeat center center;
+    background-size: cover;
+    h2 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+        font-size: 3em;
+    }
+    ul {
+       margin-bottom: 0;
+   }
+}
+
+
+@include media-query($on-laptop) {
+    .banner h2 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+        font-size: 3em;
+    }
+}

@@ -19,3 +19,5 @@ github_username:  jeffbean
 
 # Build settings
 markdown: kramdown
+sass:
+    sass_dir: _sass

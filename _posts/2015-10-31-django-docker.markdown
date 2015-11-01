@@ -161,7 +161,7 @@ The following `docker-compose` file here is used for **PRODUCTION**.
 
 You can see here it is assumed that your built image is now either on the Docker Hub or a private registry. This will run the server in the production settings using gunicorn to be the server for the django app.
 
-```yml
+```yaml
 db:
   image: postgres:9.4
 web:

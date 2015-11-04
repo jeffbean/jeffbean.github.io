@@ -1,3 +1,17 @@
+---
+layout: post
+title:  "Scss Dark Theme"
+date:   2015-11-04 11:09:24 -0700
+categories: scss blog
+---
+
+# scss theme
+
+
+This was a combination of the default elements plus other elements from pygments elements
+
+
+```css
 /**
  * Syntax highlighting styles
  */
@@ -86,5 +100,6 @@ $number-number: #ae81ff;
     .vc    { color: $name-color } // Name.Variable.Class
     .vg    { color: $name-color } // Name.Variable.Global
     .vi    { color: $name-color } // Name.Variable.Instance
-    .il    { color: $number-number } // Literal.Number.Integer.Long
+    .il    { color: $number-color } // Literal.Number.Integer.Long
 }
+```
